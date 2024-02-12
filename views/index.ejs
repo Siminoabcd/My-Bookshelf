@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My BookShelf</title>
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
+    <body>
+        <header>
+            <div class="navbar">
+                <div class="create-container">
+                    <a href="/add">Create</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="p-5 text-center rounded-3" style="background-color: #86a7ea;">
+                  <a href="/">
+                    <img src="/assets/logo.png" alt="logo">
+                  </a>
+                  <div class="container">
+                    <div class="p-container">
+                        <p class="col-lg-8 mx-auto fs-5">
+                            This website serves as a my little sanctuary, a sacred space where I keep the treasured moments from the books I've read. I celebrate the profound thoughts and insights that have resonated deeply within me, captured in the elegant prose of my favorite authors. Each memory encapsulates a moment of connection, where the essence of the narrative intertwines with my own experiences, shaping my understanding of the world and myself. In addition to the enchanting realms of fiction, this website also offers a collection of non-fiction wisdom thrown by some of the greatest minds in their respective fields. Within these pages, expect to encounter thought-provoking opinions, scientific insights, and profound observations that illuminate the complexities of the world around us. Dive into the depths of philosophy, explore the frontiers of science, and glean invaluable lessons from history's most influential figures. From astute analyses to groundbreaking discoveries, this platform celebrates the breadth and depth of human knowledge, inviting you to embark on a journey of intellectual exploration and enlightenment.
+                        </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="sorting-container">
+                <div class="h2-sort">
+                    <h2>Sort By:</h2>
+                </div>
+                <div class="categories-sort">
+                    <a href="/byAuthor">Author</a>
+                    <a href="/rating">Rating</a>
+                    <a href="/name">Name</a>
+                </div>
+            </div>
+            <div class="row">
+                <% for(let i = 0; i < books.length; i++) { %>
+                    <% if (i % 3 === 0) { %>
+                        </div><div class="row"> <!-- Close previous row and start a new one every 3 cards -->
+                    <% } %>
+                    <div class="col">
+                        <div class="container-card">
+                            <div class="card text-bg-light my-5 mx-0" style="width: 400px; height: 400px;">
+                                <div class="card-header text-bg-light"><%= books[i].author_name %></div>
+                                <div class="card-body text-bg-light">
+                                    <h3 class="card-title text-bg-light my-3"><%= books[i].book_title %></h3>
+                                    <div class="rating-card-container">
+                                        <h3><%= books[i].book_rating %></h3>
+                                    </div>
+                                    <div class="text-container-card"><p><%= books[i].book_about %></p></div>
+                                    <div class="card-button">
+                                        <a href="/book?title=<%= encodeURIComponent(books[i].book_title) %>">
+                                            <button class="btn btn-info btn_see_more">See More</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+            </div>
+        </main>
+    </body>
+</html>
